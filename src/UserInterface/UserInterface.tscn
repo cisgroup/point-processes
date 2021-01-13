@@ -1,0 +1,304 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://src/UserInterface/RunButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assests/ui_theme.tres" type="Theme" id=2]
+[ext_resource path="res://src/UserInterface/ResetButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UserInterface/Title.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/UserInterface/UserInterface.gd" type="Script" id=5]
+[ext_resource path="res://src/UserInterface/QuitButton.gd" type="Script" id=6]
+[ext_resource path="res://src/UserInterface/QuitButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/UserInterface/GridButton.gd" type="Script" id=8]
+[ext_resource path="res://src/UserInterface/Histogramm.tscn" type="PackedScene" id=9]
+
+[node name="UserInterface" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+margin_right = 195.0
+margin_bottom = 183.0
+color = Color( 0.52549, 0.52549, 0.52549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -195.0
+margin_top = -183.0
+color = Color( 0.52549, 0.52549, 0.52549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 0, 0, 0.0784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleOverlay" parent="Background" instance=ExtResource( 4 )]
+margin_left = -58.5
+margin_top = 13.0
+margin_right = 58.5
+margin_bottom = 42.0
+
+[node name="Lambda" type="Label" parent="."]
+margin_left = 39.0
+margin_top = 94.0
+margin_right = 95.0
+margin_bottom = 123.0
+text = "λ: %s"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CellCount" type="Label" parent="."]
+margin_left = 39.0
+margin_top = 60.0
+margin_right = 135.0
+margin_bottom = 89.0003
+text = "Cells: %s"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TreeCount" type="Label" parent="."]
+margin_left = 39.0
+margin_top = 27.0
+margin_right = 144.0
+margin_bottom = 56.0
+text = "Trees: %s"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OverlayMenu" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -208.0
+margin_top = 16.0
+margin_right = -12.9998
+margin_bottom = 246.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RunButton" parent="OverlayMenu" instance=ExtResource( 1 )]
+margin_right = 195.0
+margin_bottom = 35.0
+size_flags_vertical = 1
+
+[node name="ResetButton" parent="OverlayMenu" instance=ExtResource( 3 )]
+margin_top = 39.0
+margin_right = 195.0
+margin_bottom = 74.0
+size_flags_vertical = 1
+
+[node name="GridButton" type="Button" parent="OverlayMenu"]
+margin_top = 78.0
+margin_right = 195.0
+margin_bottom = 113.0
+text = "Grid"
+script = ExtResource( 8 )
+
+[node name="GraphButton" type="Button" parent="OverlayMenu"]
+margin_top = 117.0
+margin_right = 195.0
+margin_bottom = 152.0
+text = "Graph"
+
+[node name="ModelButton" type="Button" parent="OverlayMenu"]
+margin_top = 156.0
+margin_right = 195.0
+margin_bottom = 191.0
+text = "Model"
+
+[node name="QuitButton" parent="OverlayMenu" instance=ExtResource( 7 )]
+margin_top = 195.0
+margin_bottom = 230.0
+size_flags_vertical = 1
+script = ExtResource( 6 )
+
+[node name="Histogramm" parent="." instance=ExtResource( 9 )]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -336.0
+margin_right = 312.0
+margin_bottom = -19.0005
+
+[node name="SliderMenu" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -219.0
+margin_top = -226.0
+margin_right = -24.0
+margin_bottom = -18.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 195, 0 )
+rect_pivot_offset = Vector2( 194, 102 )
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SimTrees" type="Label" parent="SliderMenu"]
+margin_top = 106.0
+margin_right = 195.0
+margin_bottom = 135.0
+text = "No of Sim: 100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TreeSlider" type="HSlider" parent="SliderMenu"]
+margin_top = 139.0
+margin_right = 195.0
+margin_bottom = 155.0
+min_value = 1.0
+max_value = 50.0
+value = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LambdaTrees" type="Label" parent="SliderMenu"]
+margin_top = 159.0
+margin_right = 195.0
+margin_bottom = 188.0
+text = "Lambda (λ): 0.00"
+
+[node name="LambdaSlider" type="HSlider" parent="SliderMenu"]
+margin_top = 192.0
+margin_right = 195.0
+margin_bottom = 208.0
+min_value = 0.01
+max_value = 2.0
+step = 0.01
+value = 0.01
+
+[node name="Lambda2Trees" type="Label" parent="SliderMenu"]
+visible = false
+margin_top = 106.0
+margin_right = 195.0
+margin_bottom = 135.0
+text = "Lambda λ2: 0.00"
+
+[node name="Lambda2Slider" type="HSlider" parent="SliderMenu"]
+visible = false
+margin_top = 139.0
+margin_right = 195.0
+margin_bottom = 155.0
+min_value = 0.01
+max_value = 2.0
+step = 0.01
+value = 0.01
+
+[node name="OffspringTrees" type="Label" parent="SliderMenu"]
+visible = false
+margin_top = 179.0
+margin_right = 195.0
+margin_bottom = 208.0
+text = "Children (µ): 0.0"
+
+[node name="OffspringSlider" type="HSlider" parent="SliderMenu"]
+visible = false
+margin_top = 192.0
+margin_right = 195.0
+margin_bottom = 208.0
+min_value = 0.1
+max_value = 10.0
+step = 0.1
+value = 5.0
+
+[node name="Radius" type="Label" parent="SliderMenu"]
+visible = false
+margin_top = 179.0
+margin_right = 195.0
+margin_bottom = 208.0
+text = "Radius (R): 0.0"
+
+[node name="RadiusSlider" type="HSlider" parent="SliderMenu"]
+visible = false
+margin_top = 192.0
+margin_right = 195.0
+margin_bottom = 208.0
+min_value = 0.5
+max_value = 2.0
+step = 0.1
+value = 1.5
+
+[node name="NextMenu" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -73.0
+margin_top = -47.0
+margin_right = 73.0
+margin_bottom = -7.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="L1Button" type="Button" parent="NextMenu"]
+margin_right = 26.0
+margin_bottom = 40.0
+text = "1"
+
+[node name="L2Button" type="Button" parent="NextMenu"]
+margin_left = 30.0
+margin_right = 56.0
+margin_bottom = 40.0
+text = "2"
+
+[node name="L3Button" type="Button" parent="NextMenu"]
+margin_left = 60.0
+margin_right = 86.0
+margin_bottom = 40.0
+text = "3"
+
+[node name="L4Button" type="Button" parent="NextMenu"]
+margin_left = 90.0
+margin_right = 116.0
+margin_bottom = 40.0
+text = "4"
+
+[node name="L5Button" type="Button" parent="NextMenu"]
+margin_left = 120.0
+margin_right = 146.0
+margin_bottom = 40.0
+text = "5"
+[connection signal="button_up" from="OverlayMenu/GridButton" to="OverlayMenu/GridButton" method="_on_button_up"]
+[connection signal="button_up" from="OverlayMenu/GraphButton" to="." method="_on_GraphButton_button_up"]
+[connection signal="button_up" from="OverlayMenu/ModelButton" to="." method="_on_ModelButton_button_up"]
+[connection signal="button_up" from="OverlayMenu/QuitButton" to="OverlayMenu/QuitButton" method="_on_button_up"]
+[connection signal="value_changed" from="SliderMenu/TreeSlider" to="." method="_on_TreeSlider_value_changed"]
+[connection signal="value_changed" from="SliderMenu/LambdaSlider" to="." method="_on_LambdaSlider_value_changed"]
+[connection signal="value_changed" from="SliderMenu/Lambda2Slider" to="." method="_on_Lambda2Slider_value_changed"]
+[connection signal="value_changed" from="SliderMenu/OffspringSlider" to="." method="_on_OffspringSlider_value_changed"]
+[connection signal="value_changed" from="SliderMenu/RadiusSlider" to="." method="_on_RadiusSlider_value_changed"]
+[connection signal="button_up" from="NextMenu/L1Button" to="." method="_on_L1Button_button_up"]
+[connection signal="button_up" from="NextMenu/L2Button" to="." method="_on_L2Button_button_up"]
+[connection signal="button_up" from="NextMenu/L3Button" to="." method="_on_L3Button_button_up"]
+[connection signal="button_up" from="NextMenu/L4Button" to="." method="_on_L4Button_button_up"]
+[connection signal="button_up" from="NextMenu/L5Button" to="." method="_on_L5Button_button_up"]
